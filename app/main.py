@@ -23,12 +23,12 @@ genai.configure(api_key=google_api_key)
 # Database credentials
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_DSN =  os.getenv("DB_DSN")
-# "UATGVPDB.ITRANS.INT/GVPUAT2"
+# DB_DSN = os.getenv("DB_DSN")
+DB_DSN = "UATGVPDB.ITRANS.INT/GVPUAT2"
+
+
 
 # st.write(DB_DSN)
-
-
 
 # Initialize database connection
 db = DBOracle(DB_USER, DB_PASSWORD, DB_DSN)
@@ -104,8 +104,9 @@ if st.button("Generate Summary"):
         else:
             st.error("Unsupported file format.")
             logging.warning("Unsupported file uploaded.")
-    else:
+    elif input_method == "Paste Text" and transcript_text:
         transcript = transcript_text.strip()
+    
 
     if transcript:
         with st.spinner("Processing your transcript..."):
@@ -155,20 +156,79 @@ if st.button("Generate Summary"):
                 )
 
                 st.download_button("Download Summary", st.session_state.get("response", ""), "summary.txt", "text/plain")
+
                 
 
+                def handle_feedback_submission():
+                    try:
+                        user_feedback=st.session_state.get("user_feedback", "")
+                        if len(user_feedback) == 0:
+                            # st.error("Please enter some feedback.")
+                            #logging.warning(f"Failed to log feedback. session_id: {st.session_state.get('session_id'), 1}")
+                            return
+                        # Log the feedback into the IntelliNotes_Feedback table
+                        feedback_logged = db.log_feedback(
+                            user_id=st.session_state.get("user_id", 1),  
+                            user_feedback=st.session_state.get("user_feedback", ""),
+                            user_rating=st.session_state.get("user_rating", 3),
+                            created_date=datetime.datetime.now(),
+                            session_id = st.session_state.get("session_id", 1),
+
+                        )
 
 
-                # col1, col2 = st.columns([1, 1])
+                        if feedback_logged:
+                            st.success("Thank you for your feedback!")
+                            logging.info(f"Feedback submitted successfully. session_id: {st.session_state.get('session_id', 1)}")
+                            reset_feedback_fields()  # Reset session state after successful submission
+                        else:
+                            st.error("Failed to submit feedback. Please try again.")
+                            logging.warning(f"Failed to log feedback. session_id: {st.session_state.get('session_id'), 1}")
+
+                    except Exception as e:
+                        st.error("Error saving feedback.")
+                        logging.error("Error during feedback logging", exc_info=True)
+
+
+                def reset_feedback_fields():
+                    """Resets all feedback-related session state fields."""
+                    st.session_state["user_feedback"] = ""  # Reset feedback text
+                    st.session_state["user_rating"] = 0  
+                    st.session_state["uploader_key"] += 1
+                    # st.rerun()
+
+
+                # Feedback UI
+                st.subheader("Feedback")
+                st.text_area("Enter feedback:", key="user_feedback", value="")  # Feedback input
+                # st.slider("Rate the summary quality:", 1, 5, 3, key="user_rating")  # Rating slider
+
+                # # Create columns for alignment
+                # col1, col2, col3 = st.columns([0.3, 0.5, 3])
+                # def do_like():
+                #     st.session_state.update({"user_rating": 2})
+
+
+                # def do_dislike():
+                #     st.session_state.update({"user_rating": 1})
 
                 # with col1:
-                #     st.download_button("Download Summary", response, "summary.txt", "text/plain")
+                #     st.button("👍", key="like_button", on_click=do_like)
 
+                #         # st.success("You liked this!")  # Replace with your desired action
+
+                # # Arrange like and dislike buttons in the same row
                 # with col2:
-                #     if st.button("Reset"):
-                #         for key in st.session_state.keys():
-                #             del st.session_state[key]
-                #         st.experimental_rerun()
+                #     st.button("👎", key="dislike_button", on_click=do_dislike)
+                #         # st.error("You disliked this!")  # Replace with your desired action
+
+                # with col3:
+                #     # Submit Button
+                #     st.button("Submit Feedback", on_click=handle_feedback_submission)
+
+                st.button("Submit Feedback", on_click=handle_feedback_submission)
+
+                
 
                 logging.info("Summary generated successfully.")
             except Exception as e:
@@ -179,65 +239,3 @@ if st.button("Generate Summary"):
 
 
 
-
-
-def handle_feedback_submission():
-    try:
-        # Log the feedback into the IntelliNotes_Feedback table
-        feedback_logged = db.log_feedback(
-            user_id=st.session_state.get("user_id", 1),  
-            user_feedback=st.session_state.get("user_feedback", ""),
-            user_rating=st.session_state.get("user_rating", 3),
-            created_date=datetime.datetime.now(),
-            session_id = st.session_state.get("session_id", 1),
-
-        )
-
-        if feedback_logged:
-            st.success("Thank you for your feedback!")
-            logging.info(f"Feedback submitted successfully. session_id: {st.session_state.get('session_id', 1)}")
-            reset_feedback_fields()  # Reset session state after successful submission
-        else:
-            st.error("Failed to submit feedback. Please try again.")
-            logging.warning(f"Failed to log feedback. session_id: {st.session_state.get('session_id'), 1}")
-
-    except Exception as e:
-        st.error("Error saving feedback.")
-        logging.error("Error during feedback logging", exc_info=True)
-
-
-def reset_feedback_fields():
-    """Resets all feedback-related session state fields."""
-    st.session_state["user_feedback"] = ""  # Reset feedback text
-    st.session_state["user_rating"] = 0  # Reset slider to default value (e.g., 3)
-    st.session_state["uploader_key"] += 1
-    # st.rerun()
-
-
-# Feedback UI
-st.subheader("Feedback")
-st.text_area("Enter feedback:", key="user_feedback", value="")  # Feedback input
-# st.slider("Rate the summary quality:", 1, 5, 3, key="user_rating")  # Rating slider
-
-# Create columns for alignment
-col1, col2, col3 = st.columns([0.3, 0.5, 3])
-def do_like():
-    st.session_state.update({"user_rating": 2})
-
-
-def do_dislike():
-    st.session_state.update({"user_rating": 1})
-
-with col1:
-    st.button("👍", key="like_button", on_click=do_like)
-
-        # st.success("You liked this!")  # Replace with your desired action
-
-# Arrange like and dislike buttons in the same row
-with col2:
-    st.button("👎", key="dislike_button", on_click=do_like)
-        # st.error("You disliked this!")  # Replace with your desired action
-
-with col3:
-    # Submit Button
-    st.button("Submit Feedback", on_click=handle_feedback_submission)
