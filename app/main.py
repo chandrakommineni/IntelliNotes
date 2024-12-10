@@ -48,6 +48,8 @@ st.set_page_config(
 
 # Sidebar: Template Selection
 
+meeting_type = None
+
 with st.sidebar:
     st.image("assets/intellitrans_note_transparents.png", use_container_width=True)
 
@@ -161,8 +163,12 @@ if st.button("Generate Summary"):
 
                 def handle_feedback_submission():
                     try:
+                        
+
                         user_feedback=st.session_state.get("user_feedback", "")
+
                         if len(user_feedback) == 0:
+                            # reset_feedback_fields()
                             # st.error("Please enter some feedback.")
                             #logging.warning(f"Failed to log feedback. session_id: {st.session_state.get('session_id'), 1}")
                             return
@@ -193,7 +199,7 @@ if st.button("Generate Summary"):
                 def reset_feedback_fields():
                     """Resets all feedback-related session state fields."""
                     st.session_state["user_feedback"] = ""  # Reset feedback text
-                    st.session_state["user_rating"] = 0  
+                    st.session_state["user_rating"] = None  
                     st.session_state["uploader_key"] += 1
                     # st.rerun()
 
@@ -224,11 +230,7 @@ if st.button("Generate Summary"):
 
                 # with col3:
                 #     # Submit Button
-                #     st.button("Submit Feedback", on_click=handle_feedback_submission)
-
-                st.button("Submit Feedback", on_click=handle_feedback_submission)
-
-                
+                st.button("Submit Feedback", on_click=handle_feedback_submission)        
 
                 logging.info("Summary generated successfully.")
             except Exception as e:
