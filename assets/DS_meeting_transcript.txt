@@ -1,0 +1,154 @@
+
+Kommineni, Chandra started transcription
+
+Talat, Sheikh
+0 minutes 5 seconds0:05
+Talat, Sheikh 0 minutes 5 seconds
+I mean, do you feel like it'll be useful for having the user the ability to start a new chat?
+Talat, Sheikh 0 minutes 13 seconds
+So basically, you know, if he decides to start a new chat, like how ChatGPT allows right, then we'll just miss make the buffer size 0.
+Talat, Sheikh 0 minutes 23 seconds
+Right.
+KC
+
+Kommineni, Chandra
+0 minutes 23 seconds0:23
+Kommineni, Chandra 0 minutes 23 seconds
+Yes, we can also keep adding.
+Kommineni, Chandra 0 minutes 26 seconds
+We can give a sessions maybe limit the sessions to 10 and.
+Kommineni, Chandra 0 minutes 31 seconds
+Automatically.
+Kommineni, Chandra 0 minutes 34 seconds
+Like deleting all the other sessions or storing locally in our database but not available to the user.
+
+Talat, Sheikh
+0 minutes 37 seconds0:37
+Talat, Sheikh 0 minutes 37 seconds
+Yeah.
+Talat, Sheikh 0 minutes 40 seconds
+Yeah.
+KC
+
+Kommineni, Chandra
+0 minutes 42 seconds0:42
+Kommineni, Chandra 0 minutes 42 seconds
+That we can live, yeah.
+
+Talat, Sheikh
+14 minutes 38 seconds14:38
+Talat, Sheikh 14 minutes 38 seconds
+Anything, no.
+KC
+Kommineni, Chandra
+14 minutes 41 seconds14:41
+Kommineni, Chandra 14 minutes 41 seconds
+That's all check.
+
+Talat, Sheikh
+14 minutes 42 seconds14:42
+Talat, Sheikh 14 minutes 42 seconds
+OK.
+Talat, Sheikh 14 minutes 42 seconds
+So let me tell you one thing that came through.
+Talat, Sheikh 14 minutes 47 seconds
+Which is, you know, a LinkedIn learning.
+KC
+Kommineni, Chandra
+14 minutes 48 seconds14:48
+Kommineni, Chandra 14 minutes 48 seconds
+OK.
+Kommineni, Chandra 14 minutes 53 seconds
+Yeah, I know that.
+
+Talat, Sheikh
+14 minutes 56 seconds14:56
+Talat, Sheikh 14 minutes 56 seconds
+So we have it from our company.
+Talat, Sheikh 14 minutes 59 seconds
+And so they just gave me this curator role, which is I had this ability to create like.
+KC
+Kommineni, Chandra
+15 minutes15:00
+Kommineni, Chandra 15 minutes
+OK.
+Kommineni, Chandra 15 minutes 7 seconds
+Later.
+
+Talat, Sheikh
+15 minutes 8 seconds15:08
+Talat, Sheikh 15 minutes 8 seconds
+Assign core.
+Talat, Sheikh 15 minutes 8 seconds
+Yeah, I have.
+Talat, Sheikh 15 minutes 9 seconds
+I have ability to assign people on my team courses and things like that that are interesting for them for their training.
+Talat, Sheikh 15 minutes 18 seconds
+So if you find something that you like and courses or anything, let me know.
+KC
+Kommineni, Chandra
+15 minutes 20 seconds15:20
+Kommineni, Chandra 15 minutes 20 seconds
+OK.
+
+Talat, Sheikh
+15 minutes 24 seconds15:24
+Talat, Sheikh 15 minutes 24 seconds
+OK. And there's all sorts of stuff on there about llms and rag and tuning and anything.
+Talat, Sheikh 15 minutes 30 seconds
+So if we feel as relevant, I can I can help us get that.
+Talat, Sheikh 15 minutes 38 seconds
+Right. It's basically we've already paid for it. It's free.
+KC
+Kommineni, Chandra
+15 minutes 40 seconds15:40
+Kommineni, Chandra 15 minutes 40 seconds
+Yes.
+
+Talat, Sheikh
+15 minutes 41 seconds15:41
+Talat, Sheikh 15 minutes 41 seconds
+So we just have to start using it.
+KC
+Kommineni, Chandra
+15 minutes 47 seconds15:47
+Kommineni, Chandra 15 minutes 47 seconds
+OK.
+
+Talat, Sheikh
+15 minutes 53 seconds15:53
+Talat, Sheikh 15 minutes 53 seconds
+Right. So thanks.
+Talat, Sheikh 15 minutes 54 seconds
+I will talk to you maybe on Thursday, if not before that.
+Talat, Sheikh 15 minutes 59 seconds
+Let me know if you need anything.
+KC
+Kommineni, Chandra
+16 minutes 1 second16:01
+Kommineni, Chandra 16 minutes 1 second
+Sure.
+
+Talat, Sheikh
+16 minutes 1 second16:01
+Talat, Sheikh 16 minutes 1 second
+The LLM stops working.
+Talat, Sheikh 16 minutes 2 seconds
+Or if you have any questions about the rag stuff and once you check in the code, I'll be able to try to download it and run it myself and start adding and contributing with the code.
+Talat, Sheikh 16 minutes 13 seconds
+Thank you.
+KC
+Kommineni, Chandra
+16 minutes 14 seconds16:14
+Kommineni, Chandra 16 minutes 14 seconds
+Push it today.
+
+Talat, Sheikh
+16 minutes 16 seconds16:16
+Talat, Sheikh 16 minutes 16 seconds
+OK. Thanks. Bye.
+KC
+Kommineni, Chandra
+16 minutes 17 seconds16:17
+Kommineni, Chandra 16 minutes 17 seconds
+Thank you. Bye.

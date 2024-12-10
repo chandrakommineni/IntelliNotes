@@ -1,0 +1,8 @@
+streamlit
+google.generativeai
+python-docx
+tiktoken
+oracledb
+python-dotenv
+langchain_ollama
+
